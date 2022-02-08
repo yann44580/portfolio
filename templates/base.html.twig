@@ -1,19 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Portfolio
+			{% endblock %}
+		</title>
+		<!-- style -->
+		<link
+		rel="stylesheet" href="{{asset('style/style.css')}}">
+        <!-- style -->
+        <script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+		<!-- JavaScript -->
+		<script src="{{asset('js/script.js')}}" defer></script>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<nav>
+			<div class="navbar-fixed">
+				<a href="#" class="brand-logo">Logo</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li>
+						<a href="sass.html">Qui suis-je?</a>
+					</li>
+					<li>
+						<a href="badges.html">Mes appétences</a>
+					</li>
+					<li>
+						<a href="collapsible.html">Ma formation</a>
+					</li>
+					<li>
+						<a href="collapsible.html">Mes réalisations</a>
+					</li>
+					<li>
+						<a href="collapsible.html">contact</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		{% block body %}{% endblock %}
+		<footer>
+			<div class="contact"></div>
+			<div class="copyright">
+            <p>Copyright 2022<i class="far fa-copyright"></i>Yann Fiolleau</p>
+        </div>
+		</footer>
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
 </html>

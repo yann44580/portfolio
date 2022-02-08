@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presentation index{% endblock %}
+
+{% block body %}
+    <h1>Presentation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Content</th>
+                <th>Git</th>
+                <th>Linkedin</th>
+                <th>Title</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Subtitle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presentation in presentations %}
+            <tr>
+                <td>{{ presentation.id }}</td>
+                <td>{{ presentation.address }}</td>
+                <td>{{ presentation.content }}</td>
+                <td>{{ presentation.git }}</td>
+                <td>{{ presentation.linkedin }}</td>
+                <td>{{ presentation.title }}</td>
+                <td>{{ presentation.email }}</td>
+                <td>{{ presentation.phone }}</td>
+                <td>{{ presentation.name }}</td>
+                <td>{{ presentation.subtitle }}</td>
+                <td>
+                    <a href="{{ path('presentation_show', {'id': presentation.id}) }}">show</a>
+                    <a href="{{ path('presentation_edit', {'id': presentation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('presentation_new') }}">Create new</a>
+{% endblock %}
