@@ -26,14 +26,8 @@
 					{# <td>{{ project.picture }}</td> #}
 					<td>{{ project.content }}</td>
 					<td> 
-                        <pre>
-                            {# {{ dump(project.techno) }} #}
-                        </pre>
-						{% for techno in project.techno%}
+						{% for techno in project.techno %}
 							{{ techno.name }}
-							<pre>
-                        {{ dump(techno) }}
-                         </pre>
 						{% endfor %}
 					</td>
 					<td>

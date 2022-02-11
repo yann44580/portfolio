@@ -16,6 +16,7 @@
         .side-nav {
             display: flex;
             flex-direction: column;
+           
             
             .brand-logo {
                 position: initial;
@@ -29,6 +30,8 @@
     margin-left: 10vw;
     min-height: 1000px;
 }
+
+
 .footer_admin{
     position: fixed;
     bottom: 0;
@@ -99,4 +102,9 @@ footer {
             text-align: center;
         }
     }
+}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: initial !important; 
+    opacity: 1 !important; 
+    pointer-events: visible !important; 
 }

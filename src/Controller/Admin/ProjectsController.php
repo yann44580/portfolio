@@ -4,15 +4,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Projects;
 use App\Form\ProjectsType;
+use App\Repository\TechnosRepository;
 use App\Repository\ProjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/admin/projects", name="admin_projects_")
@@ -32,7 +33,7 @@ class ProjectsController extends AbstractController
     /**
      * @Route("/new", name="new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function new(TechnosRepository $technosRepository, Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $project = new Projects();
         $form = $this->createForm(ProjectsType::class, $project);
@@ -69,6 +70,7 @@ class ProjectsController extends AbstractController
         return $this->renderForm('admin/projects/new.html.twig', [
             'project' => $project,
             'form' => $form,
+            'technos' => $technosRepository->findAll(),
         ]);
     }
 
@@ -76,7 +78,7 @@ class ProjectsController extends AbstractController
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Projects $project, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function edit(TechnosRepository $technosRepository, Request $request, Projects $project, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ProjectsType::class, $project);
         $form->handleRequest($request);
@@ -109,6 +111,7 @@ class ProjectsController extends AbstractController
         return $this->renderForm('admin/projects/edit.html.twig', [
             'project' => $project,
             'form' => $form,
+            'technos' => $technosRepository->findAll(),
         ]);
     }
 

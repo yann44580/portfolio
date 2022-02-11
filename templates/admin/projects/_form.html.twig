@@ -14,10 +14,14 @@
 
 <div class="input-field">
 	<p>
+		{# {% for techno in technos %} #}
 		<label>
-			{{ form_widget(form.techno, {'attr' : {'class': 'filled-in'}}) }}
-			<span>Techno</span>
+            {{ form_label(form.techno) }}
+			{{ form_widget(form.techno,  { 'attr': {'class': 'filled-in'} }) }}
+			{# <input type="checkbox"> #}
+			<span></span>
 		</label>
+		{# {% endfor %} #}
 	</p>
 </div>
 

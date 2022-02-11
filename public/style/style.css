@@ -119,4 +119,10 @@ footer .copyright {
 .title .title1 h3 {
   text-align: center;
 }
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: initial !important;
+  opacity: 1 !important;
+  pointer-events: visible !important;
+}
 /*# sourceMappingURL=style.css.map */
