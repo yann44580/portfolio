@@ -1,5 +1,49 @@
+.admin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.admin .navbar-fixed {
+  width: 150px;
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+}
+
+.admin .navbar-fixed .side-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.admin .navbar-fixed .side-nav .brand-logo {
+  position: initial;
+}
+
+.example-wrapper {
+  width: 80vw;
+  margin-left: 10vw;
+  min-height: 1000px;
+}
+
+.footer_admin {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+}
+
 nav .navbar-fixed {
   background-color: #5c5ce7;
+}
+
+nav .navbar-fixed .connect {
+  margin-left: 5vw;
 }
 
 footer {
@@ -8,6 +52,71 @@ footer {
 }
 
 footer .copyright {
+  text-align: center;
+}
+
+.edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90vw;
+}
+
+.edit h1 {
+  text-align: center;
+}
+
+.edit .row {
+  width: 80vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.edit .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.title {
+  background-image: url(../ressources/buddha.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title .title1 {
+  width: 50vw;
+  height: 30vh;
+}
+
+.title .title1 h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.title .title1 h3 {
   text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

@@ -6,22 +6,24 @@ use App\Entity\Presentation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PresentationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('address')
-            ->add('content')
-            ->add('git')
-            ->add('linkedin')
-            ->add('title')
-            ->add('email')
-            ->add('phone')
             ->add('name')
-            ->add('subtitle')
-        ;
+            ->add('subtitle', TextType::class, ['required' => false])
+            ->add('address')
+            ->add('content', TextareaType::class, ['required' => false])
+            ->add('git', TextType::class, ['required' => false])
+            ->add('linkedin', TextType::class, ['required' => false])
+            ->add('title', TextType::class, ['required' => false])
+            ->add('email', TextType::class, ['required' => false])
+            ->add('phone');
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

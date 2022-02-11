@@ -26,27 +26,6 @@ class CompetencesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="competences_new", methods={"GET", "POST"})
-     */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $competence = new Competences();
-        $form = $this->createForm(CompetencesType::class, $competence);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($competence);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('competences_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('competences/new.html.twig', [
-            'competence' => $competence,
-            'form' => $form,
-        ]);
-    }
 
     /**
      * @Route("/{id}", name="competences_show", methods={"GET"})
@@ -58,36 +37,6 @@ class CompetencesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="competences_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Competences $competence, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CompetencesType::class, $competence);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('competences_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('competences/edit.html.twig', [
-            'competence' => $competence,
-            'form' => $form,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="competences_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Competences $competence, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$competence->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($competence);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('competences_index', [], Response::HTTP_SEE_OTHER);
-    }
+  
 }

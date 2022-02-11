@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Presentation{% endblock %}
+
+{% block body %}
+    <h1>Create new Presentation</h1>
+
+    {{ include('admin/presentation/_form.html.twig') }}
+
+    <a href="{{ path('admin_presentation_index') }}">back to list</a>
+{% endblock %}

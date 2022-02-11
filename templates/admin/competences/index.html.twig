@@ -1,25 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Gerer les competences
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
 
-	<div class="example-wrapper">
+	<div >
 		<h1>Gérer les competences</h1>
-        <a href="{{path ("admin_competences_new")}}" class="btn shadow-1 rounded-1 blue">Ajouter une compétence</a>
+		<a href="{{path ("admin_competences_new")}}" class="btn shadow-1 rounded-1 blue">Ajouter une compétence</a>
 		<div class="responsive-table">
 			<table class="table striped">
 				<thead>
@@ -37,19 +25,37 @@
 							<td>{{competence.id}}</td>
 							<td>{{competence.name}}</td>
 							<td>{{competence.content}}</td>
-							<td>{{competence.picture}}</td>
+							<td><img src="{{ asset('uploads/photos/' ~ competence.picture) }}" width="100"></td>
+							{# <td>{{competence.picture}}</td> #}
 							<td class="text-center">
-								
-								<a href="#" class="btn shadow-1 rounded-1 blue">Normal button</a>
+
+								<a href="{{path ("admin_competences_edit", {id : competence.id})}}" class="btn shadow-1 rounded-1 blue">Modifier</a>
+								{{ include('admin/competences/_delete_form.html.twig') }}
 							</td>
 						</tr>
-                    {%endfor%}
+						{%endfor%}
 					</tbody>
 				</tbody>
 			</table>
 		</div>
-		{# {{<pre>
-        {{ dump(competences) }}
-	</pre>}} #}
 
-</div>{% endblock %}
+		<div id="modal-delete" class="modal">
+			<div class="modal-content">
+				<h4>Supprimer une annonce</h4>
+				<p>Etes vous sur de vouloir supprimer la compétence.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="" class="waves-effect red btn-small">Valider</a>
+				<a href="" data-target="modal-delete" class="modal-close waves-effect waves-green btn-flat">fermer</a>
+			</div>
+		</div>
+		{# {{<pre>
+		        {{ dump(competences) }}
+			</pre>}} #}
+
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+
+{% endblock %}

@@ -2,31 +2,30 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Competences;
-use App\Form\CompetencesType;
+use App\Entity\Projects;
+use App\Form\ProjectsType;
+use App\Repository\ProjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\CompetencesRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
- * @Route("/admin/competences", name="admin_competences_")
+ * @Route("/admin/projects", name="admin_projects_")
  */
-
-class CompetencesController extends AbstractController
+class ProjectsController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="index", methods={"GET"})
      */
-    public function index(CompetencesRepository $competencesRepository): Response
+    public function index(ProjectsRepository $projectsRepository): Response
     {
-        return $this->render('admin/competences/index.html.twig', [
-            'competences' => $competencesRepository->findAll()
+        return $this->render('admin/projects/index.html.twig', [
+            'projects' => $projectsRepository->findAll(),
         ]);
     }
 
@@ -35,8 +34,8 @@ class CompetencesController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $competence = new Competences();
-        $form = $this->createForm(CompetencesType::class, $competence);
+        $project = new Projects();
+        $form = $this->createForm(ProjectsType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -57,17 +56,18 @@ class CompetencesController extends AbstractController
                 }
                 // met à jour la propriété 'photoLicencie' pour stocker le nom du fichier PDF
                 // au lieu de son contenu
-                $competence->setPicture($newFilename);
+                $project->setPicture($newFilename);
             }
 
-            $entityManager->persist($competence);
+
+            $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_competences_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_projects_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/competences/new.html.twig', [
-            'competence' => $competence,
+        return $this->renderForm('admin/projects/new.html.twig', [
+            'project' => $project,
             'form' => $form,
         ]);
     }
@@ -76,11 +76,10 @@ class CompetencesController extends AbstractController
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Competences $competence, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function edit(Request $request, Projects $project, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $form = $this->createForm(CompetencesType::class, $competence);
+        $form = $this->createForm(ProjectsType::class, $project);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $picture = $form->get('picture')->getData();
@@ -100,32 +99,29 @@ class CompetencesController extends AbstractController
                 }
                 // met à jour la propriété 'photoLicencie' pour stocker le nom du fichier PDF
                 // au lieu de son contenu
-                $competence->setPicture($newFilename);
+                $project->setPicture($newFilename);
             }
-
-
-
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_competences_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_projects_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/competences/edit.html.twig', [
-            'competence' => $competence,
+        return $this->renderForm('admin/projects/edit.html.twig', [
+            'project' => $project,
             'form' => $form,
         ]);
     }
 
     /**
-     * @Route("/{id}/delete", name="delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
-    public function delete(Request $request, Competences $competence, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Projects $project, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $competence->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($competence);
+        if ($this->isCsrfTokenValid('delete' . $project->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($project);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_competences_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_projects_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -1,0 +1,53 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Projects index
+{% endblock %}
+
+{% block body %}
+	<h1>Projects index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Picture</th>
+				<th>Content</th>
+				<th>Techno</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for project in projects %}
+				<tr>
+					<td>{{ project.id }}</td>
+					<td>{{ project.name }}</td>
+					<td><img src="{{ asset('uploads/photos/' ~ project.picture) }}" width="100"></td>
+					{# <td>{{ project.picture }}</td> #}
+					<td>{{ project.content }}</td>
+					<td> 
+                        <pre>
+                            {# {{ dump(project.techno) }} #}
+                        </pre>
+						{% for techno in project.techno%}
+							{{ techno.name }}
+							<pre>
+                        {{ dump(techno) }}
+                         </pre>
+						{% endfor %}
+					</td>
+					<td>
+						<a href="{{ path('admin_projects_edit', {'id': project.id}) }}">edit</a>
+						{{ include('admin/projects/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_projects_new') }}">Create new</a>
+{% endblock %}
