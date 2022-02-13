@@ -5,34 +5,36 @@
 // 1.index-admin================================
 
 .admin {
-    display: flex;
-    
-    .navbar-fixed {
-        width: 150px;
-        height: 100vh;
-        background-color: gray;
-        position: fixed;
-        
-        .side-nav {
-            display: flex;
-            flex-direction: column;
-           
-            
-            .brand-logo {
-                position: initial;
+    .admin1 {
+        display: flex;
+
+        .nav {
+            max-width: 150px;
+            height: 100vh;
+            background-color: gray;
+            position: fixed;
+
+            .side-nav {
+                display: flex;
+                flex-direction: column;
+
+
+                .brand-logo {
+                    position: initial;
+                }
             }
         }
     }
 }
 
-.example-wrapper{
-    width: 80vw;
-    margin-left: 10vw;
+.example-wrapper {
+    // width: 80vw;
+    // margin-left: 10vw;
     min-height: 1000px;
 }
 
 
-.footer_admin{
+.footer_admin {
     position: fixed;
     bottom: 0;
     width: 100vw;
@@ -40,13 +42,30 @@
 }
 
 // 2.index-front=================================
-nav {
-    .navbar-fixed {
-        background-color: rgb(92, 92, 231);
-        .connect{
-            margin-left: 5vw;
+.base1 {
+    background-image: url(../ressources/buddha.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+    .base {
+        background-color: rgb(0, 0, 0);
+        opacity: 0.2;
+
+        .navbar-fixed {
+
+            .connect {
+                margin-left: 6vw;
+            }
         }
 
+        ul {
+            li {
+                a {
+                    color: #00ff10;
+                }
+            }
+        }
     }
 }
 
@@ -58,6 +77,7 @@ footer {
         text-align: center;
     }
 }
+
 
 .edit {
     display: flex;
@@ -74,7 +94,7 @@ footer {
         flex-direction: column;
     }
 
-    .button{
+    .button {
         display: flex;
         justify-content: space-evenly;
     }
@@ -83,28 +103,30 @@ footer {
 
 // 3.Main index
 
-.title{
-    background-image: url(../ressources/buddha.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 700px;
+.title {
     display: flex;
     justify-content: center;
     align-items: center;
-    .title1{
+    height: 80vh;
+
+    .title1 {
         width: 50vw;
         height: 30vh;
-        h1{
+
+        h1 {
             margin: 0;
             text-align: center;
         }
-        h3{
+
+        h3 {
             text-align: center;
         }
     }
 }
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-    position: initial !important; 
-    opacity: 1 !important; 
-    pointer-events: visible !important; 
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: initial !important;
+    opacity: 1 !important;
+    pointer-events: visible !important;
 }

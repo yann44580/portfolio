@@ -1,4 +1,26 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="input-field">
+{{ form_label(form.name) }}
+{{ form_widget(form.name) }}
+</div>
+<div class="input-field">
+{{ form_label(form.city) }}
+{{ form_widget(form.city) }}
+</div>
+
+<div class="input-field">
+{{ form_row(form.content) }}
+</div>
+
+
+
+<div class="input-field">
+
+      
+
+        {{ form_row(form.date) }}
+
+</div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

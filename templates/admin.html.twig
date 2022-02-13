@@ -11,24 +11,24 @@
 	<link rel="stylesheet" href="{{asset('style/style.css')}}">
 	<!-- style -->
 	<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
-
+	
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+	
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+	
 	<!-- JavaScript -->
 	<script src="{{asset('js/script.js')}}" defer></script>
 
 </head>
 
 <body>
-	<header>
-		<div class="admin">
-			<nav class="navbar-fixed">
+	<main class="row admin">
+		<div class="admin1 col l2 m4 s4">
+			<nav class="nav">
 				<div class="side-nav">
-					<a href="{{path ('admin')}}" class="">Logo</a>
+					<a href="{{path ('admin')}}" class="brand-logo">Logo</a>
 					<ul id="" class="">
 						<li>
 							<a href="{{path ('admin_presentation_index')}}">Qui suis-je?</a>
@@ -46,15 +46,16 @@
 							<a href="{{path ('admin_technos_index')}}">technos</a>
 						</li>
 						<li>
-							<a href="{{path ('home')}}">Reour au site</a>
+							<a href="{{path ('home')}}">Retour au site</a>
 						</li>
 					</ul>
 				</div>
 			</nav>
 		</div>
-	</header>
-	<main class="example-wrapper">
-		{% block body %}{% endblock %}
+
+		<section class="example-wrapper col l10 m8 s8">
+			{% block body %}{% endblock %}
+		</section>
 	</main>
 	<footer class="footer_admin">
 		<div class="contact"></div>

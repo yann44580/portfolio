@@ -1,17 +1,17 @@
-.admin {
+.admin .admin1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.admin .navbar-fixed {
-  width: 150px;
+.admin .admin1 .nav {
+  max-width: 150px;
   height: 100vh;
   background-color: gray;
   position: fixed;
 }
 
-.admin .navbar-fixed .side-nav {
+.admin .admin1 .nav .side-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,13 +21,11 @@
           flex-direction: column;
 }
 
-.admin .navbar-fixed .side-nav .brand-logo {
+.admin .admin1 .nav .side-nav .brand-logo {
   position: initial;
 }
 
 .example-wrapper {
-  width: 80vw;
-  margin-left: 10vw;
   min-height: 1000px;
 }
 
@@ -38,12 +36,24 @@
   height: 50px;
 }
 
-nav .navbar-fixed {
-  background-color: #5c5ce7;
+.base1 {
+  background-image: url(../ressources/buddha.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
-nav .navbar-fixed .connect {
-  margin-left: 5vw;
+.base1 .base {
+  background-color: black;
+  opacity: 0.2;
+}
+
+.base1 .base .navbar-fixed .connect {
+  margin-left: 6vw;
+}
+
+.base1 .base ul li a {
+  color: #00ff10;
 }
 
 footer {
@@ -91,10 +101,6 @@ footer .copyright {
 }
 
 .title {
-  background-image: url(../ressources/buddha.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -104,6 +110,7 @@ footer .copyright {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 80vh;
 }
 
 .title .title1 {
@@ -120,7 +127,8 @@ footer .copyright {
   text-align: center;
 }
 
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
   position: initial !important;
   opacity: 1 !important;
   pointer-events: visible !important;

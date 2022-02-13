@@ -4,8 +4,12 @@ namespace App\Form;
 
 use App\Entity\Formations;
 use Symfony\Component\Form\AbstractType;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class FormationsType extends AbstractType
 {
@@ -14,9 +18,11 @@ class FormationsType extends AbstractType
         $builder
             ->add('name')
             ->add('city')
-            ->add('content')
-            ->add('date')
-        ;
+            ->add('content', TextareaType::class, ['required' => false])
+            ->add('date', DateType::class, [
+               'widget' => 'single_text',
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

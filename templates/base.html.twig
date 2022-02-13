@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
 
-		<title>
-			{% block title %}{% endblock %}
-		</title>
-		<!-- style -->
-		<link
-		rel="stylesheet" href="{{asset('style/style.css')}}">
-		<!-- style -->
-		<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
+<head>
+	<meta charset="UTF-8">
 
-		<!-- Jquery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<!-- librairie type js -->
-		<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+	<title>
+		{% block title %}{% endblock %}
+	</title>
+	<!-- style -->
+	<link rel="stylesheet" href="{{asset('style/style.css')}}">
+	<!-- style -->
+	<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
 
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<!-- Jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-		<!-- JavaScript -->
-		<script src="{{asset('js/script.js')}}" defer></script>
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		<nav>
+	<!-- librairie type js -->
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{% endblock %}
+	<!-- JavaScript -->
+	<script src="{{asset('js/script.js')}}" defer></script>
+	{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	{% endblock %}
+</head>
+
+<body>
+	<div class="base1">
+		<nav class="base">
 			<div class="navbar-fixed">
-				<a href="#" class="brand-logo">Logo</a>
 				{% if app.user %}
-					<div class="connect">
-						<a href="{{path ('admin')}}" class="brand-logo">Admin</a>
-					</div>
+				<a href="{{path ('admin')}}" class="brand-logo">Admin</a>
 				{% endif %}
+				<div class="connect">
+					<a href="#" class="brand-logo col l3">Logo</a>
+				</div>
 
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<ul id="nav-mobile" class="right hide-on-med-and-down col l8">
 
 					<li>
 						<a href="#">Mes appétences</a>
@@ -55,17 +57,20 @@
 						<a href="#">contact</a>
 					</li>
 				</ul>
+				<div class="col l1"></div>
 			</div>
 		</nav>
 		{% block body %}{% endblock %}
-		<footer>
-			<div class="contact"></div>
-			<div class="copyright">
-				<p>Copyright 2022<i class="far fa-copyright"></i>Yann Fiolleau</p>
-			</div>
-		</footer>
+	</div>
+	<footer>
+		<div class="contact"></div>
+		<div class="copyright">
+			<p>Copyright 2022<i class="far fa-copyright"></i>Yann Fiolleau</p>
+		</div>
+	</footer>
 
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	</body>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </html>
